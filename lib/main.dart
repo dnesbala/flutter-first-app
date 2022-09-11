@@ -26,23 +26,45 @@ class MyApp extends StatelessWidget {
               Icon(Icons.account_circle_outlined,
                   size: 30, color: Colors.amber),
               Icon(
-                Icons.settings,
+                Icons.add_location_alt_rounded,
                 color: Colors.orange,
                 size: 30,
               ),
             ],
           ),
-          backgroundColor: Colors.grey.shade300,
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
+          backgroundColor: Colors.grey[300],
+          body: Container(
+            padding: EdgeInsets.only(left: 50, top: 40),
+            margin: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            height: 100,
+            width: 200,
             child: Text(
-              "Hello World. This is my first Flutter app.",
-              style: TextStyle(
-                color: Colors.green.shade200,
-                fontSize: 25,
-                backgroundColor: Colors.red,
+              "This is container",
+              style: TextStyle(color: Colors.white),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              border: Border.all(color: Colors.black, width: 2),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
               ),
-              textAlign: TextAlign.left,
+              gradient: LinearGradient(
+                colors: [
+                  Colors.yellow,
+                  Colors.green,
+                ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 5,
+                  offset: Offset(2, 10),
+                ),
+              ],
             ),
           ),
         ),
