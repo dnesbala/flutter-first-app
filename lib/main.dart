@@ -1,5 +1,6 @@
 import 'package:first_app/button_test.dart';
 import 'package:first_app/image_test.dart';
+import 'package:first_app/row_column_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: ButtonTest(),
+      home: RowColumnTest(),
       theme: ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
