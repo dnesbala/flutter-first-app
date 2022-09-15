@@ -7,34 +7,36 @@ class RowColumnTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          color: Colors.grey,
-          // width: double.infinity,
-          child: Column(
+        body: SizedBox(
+          width: double.infinity,
+          child: Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            alignment: WrapAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Container(
-                  height: 150,
-                  width: 120,
-                  color: Colors.red,
-                  child: Text("Red Box"),
-                ),
+              Container(
+                height: 300,
+                width: 150,
+                color: Colors.red,
+                child: Text("Red Box"),
               ),
-              Expanded(
-                child: Container(
-                  height: 150,
-                  width: 120,
-                  color: Colors.green,
-                  child: Text("Green Box"),
-                ),
+              Container(
+                height: 300,
+                width: 150,
+                color: Colors.green,
+                child: Text("Green Box"),
               ),
-              Expanded(
-                child: Container(
-                  height: 150,
-                  width: 120,
-                  color: Colors.blue,
-                  child: Text("Blue Box"),
-                ),
+              Container(
+                height: 300,
+                width: 150,
+                color: Colors.blue,
+                child: Text("Blue Box"),
+              ),
+              Container(
+                height: 300,
+                width: 150,
+                color: Colors.yellow,
+                child: Text("Blue Box"),
               ),
             ],
           ),
