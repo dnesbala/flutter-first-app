@@ -1,4 +1,4 @@
-import 'package:first_app/insta_ui.dart';
+import 'package:first_app/screens/insta_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: InstaUI(),
+      home: InstaHomeScreen(),
       theme: ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
