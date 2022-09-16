@@ -11,25 +11,34 @@ class InstaHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 10),
-              InstaAppBar(),
-              Divider(),
-              SizedBox(height: 20),
-              ...posts
-                  .map((post) => Column(
-                        children: [
-                          InstaPost(
-                            post: post,
-                          ),
-                          SizedBox(height: 20),
-                        ],
-                      ))
-                  .toList(),
-            ],
-          ),
+        body: Column(
+          children: [
+            SizedBox(height: 10),
+            InstaAppBar(),
+            Divider(),
+            SizedBox(height: 20),
+            // ...posts
+            //     .map((post) => Column(
+            //           children: [
+            //             InstaPost(
+            //               post: post,
+            //             ),
+            //             SizedBox(height: 20),
+            //           ],
+            //         ))
+            //     .toList(),
+            Expanded(
+              child: ListView.separated(
+                itemCount: posts.length, //2
+                itemBuilder: (BuildContext context, int index) {
+                  return InstaPost(post: posts[index]);
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(height: 20);
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
