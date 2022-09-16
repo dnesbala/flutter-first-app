@@ -1,3 +1,5 @@
+import 'package:first_app/gridview_demo.dart';
+import 'package:first_app/listtile_demo.dart';
 import 'package:first_app/screens/insta_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,9 +10,6 @@ void main() {
   );
 }
 
-// Single child widget
-// Multiple children widget
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: InstaHomeScreen(),
+      home: GridViewDemo(),
       theme: ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
