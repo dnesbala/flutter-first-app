@@ -1,6 +1,7 @@
 import 'package:first_app/gridview_demo.dart';
 import 'package:first_app/listtile_demo.dart';
 import 'package:first_app/screens/insta_home_screen.dart';
+import 'package:first_app/stateful_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: GridViewDemo(),
+      home: StatefulTest(),
       theme: ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
