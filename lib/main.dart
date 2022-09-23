@@ -1,3 +1,4 @@
+import 'package:first_app/form_test.dart';
 import 'package:first_app/gridview_demo.dart';
 import 'package:first_app/listtile_demo.dart';
 import 'package:first_app/screens/insta_home_screen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: StatefulTest(),
+      home: FormTest(),
       theme: ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
