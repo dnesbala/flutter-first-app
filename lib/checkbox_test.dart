@@ -74,6 +74,16 @@ class _CheckboxTestState extends State<CheckboxTest> {
             ],
           ),
           Text("Gender = $genderGroupValue"),
+          RadioListTile(
+            value: "male",
+            groupValue: genderGroupValue,
+            onChanged: (String? value) {
+              setState(() {
+                genderGroupValue = value!;
+              });
+            },
+            title: Text("Male"),
+          ),
         ],
       ),
       // Row(
