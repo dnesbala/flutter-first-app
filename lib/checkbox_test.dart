@@ -9,6 +9,7 @@ class CheckboxTest extends StatefulWidget {
 
 class _CheckboxTestState extends State<CheckboxTest> {
   bool _flutterCheckboxValue = false;
+  String genderGroupValue = "male";
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,49 @@ class _CheckboxTestState extends State<CheckboxTest> {
             controlAffinity: ListTileControlAffinity.trailing,
             dense: true,
           ),
+          Row(
+            children: [
+              Radio(
+                groupValue: genderGroupValue,
+                value: "male",
+                onChanged: (String? value) {
+                  setState(() {
+                    genderGroupValue = value!;
+                  });
+                },
+              ),
+              Text("Male"),
+            ],
+          ),
+          Row(
+            children: [
+              Radio<String>(
+                value: "female",
+                groupValue: genderGroupValue,
+                onChanged: (String? value) {
+                  setState(() {
+                    genderGroupValue = value!;
+                  });
+                },
+              ),
+              Text("Female"),
+            ],
+          ),
+          Row(
+            children: [
+              Radio<String>(
+                value: "others",
+                groupValue: genderGroupValue,
+                onChanged: (value) {
+                  setState(() {
+                    genderGroupValue = value!;
+                  });
+                },
+              ),
+              Text("Others"),
+            ],
+          ),
+          Text("Gender = $genderGroupValue"),
         ],
       ),
       // Row(
