@@ -1,6 +1,7 @@
 import 'package:first_app/checkbox_test.dart';
 import 'package:first_app/dropdown_test.dart';
 import 'package:first_app/form_test.dart';
+import 'package:first_app/form_validation_test.dart';
 import 'package:first_app/gridview_demo.dart';
 import 'package:first_app/listtile_demo.dart';
 import 'package:first_app/screens/insta_home_screen.dart';
@@ -22,10 +23,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: DropdownTest(),
+      home: FormValidationTest(),
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.green,
         fontFamily: GoogleFonts.lato().fontFamily,
+      ),
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
       ),
     );
   }
