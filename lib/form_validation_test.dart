@@ -1,8 +1,18 @@
-import 'package:first_app/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
+import 'package:first_app/widgets/custom_textfield.dart';
+
+import 'login_page.dart';
+
 class FormValidationTest extends StatelessWidget {
-  const FormValidationTest({Key? key}) : super(key: key);
+  final bool isDarkMode;
+  final Function toggleTheme;
+
+  const FormValidationTest({
+    Key? key,
+    required this.isDarkMode,
+    required this.toggleTheme,
+  }) : super(key: key);
 
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -11,6 +21,14 @@ class FormValidationTest extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Form Validation"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              toggleTheme();
+            },
+            icon: isDarkMode ? Icon(Icons.light_mode) : Icon(Icons.dark_mode),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -19,7 +37,7 @@ class FormValidationTest extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
-              Text("Login Form", style: Theme.of(context).textTheme.headline5),
+              Text("Login Form", style: Theme.of(context).textTheme.headline1),
               SizedBox(height: 20),
               CustomTextField(
                 hintText: "Email",
@@ -44,7 +62,8 @@ class FormValidationTest extends StatelessWidget {
               SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  print("pressed");
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => LoginPage()));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -54,17 +73,14 @@ class FormValidationTest extends StatelessWidget {
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: Text("Button"),
+                  child: Text(
+                    "Navigate to Log In",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                 ),
               ),
               ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                  ),
-                ),
+                style: Theme.of(context).elevatedButtonTheme.style,
                 onPressed: () {
                   final isValidated = _formKey.currentState?.validate();
                   if (isValidated!) {
@@ -105,11 +121,21 @@ class FormValidationTest extends StatelessWidget {
                     );
                   }
                 },
-                child: Text("Log In"),
+                child: Text(
+                  "Log In",
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
               ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("+"),
       ),
     );
   }

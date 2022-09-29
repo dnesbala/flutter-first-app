@@ -1,11 +1,5 @@
-import 'package:first_app/checkbox_test.dart';
-import 'package:first_app/dropdown_test.dart';
-import 'package:first_app/form_test.dart';
 import 'package:first_app/form_validation_test.dart';
-import 'package:first_app/gridview_demo.dart';
-import 'package:first_app/listtile_demo.dart';
-import 'package:first_app/screens/insta_home_screen.dart';
-import 'package:first_app/stateful_test.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,22 +9,60 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isDarkMode = false;
+
+  void _toggleTheme() {
+    setState(() {
+      isDarkMode = !isDarkMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home: FormValidationTest(),
+      home:
+          FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.green,
-        fontFamily: GoogleFonts.lato().fontFamily,
+        scaffoldBackgroundColor: Colors.grey.shade200,
+        // appBarTheme: AppBarTheme(
+        //   color: Colors.green,
+        //   elevation: 0,
+        // ),
+        fontFamily: "Poppins",
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.red,
+          accentColor: Colors.amber,
+        ),
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 40),
+          headline2: TextStyle(fontSize: 32),
+          bodyText1: TextStyle(fontSize: 14, color: Colors.white),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
+          ),
+        ),
       ),
       darkTheme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            fontSize: 14,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
