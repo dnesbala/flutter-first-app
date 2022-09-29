@@ -17,8 +17,8 @@ class HomePage extends StatelessWidget {
             Text("Home Page"),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => ProfilePage()),
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  "/profile",
                   (route) => false,
                 );
               },

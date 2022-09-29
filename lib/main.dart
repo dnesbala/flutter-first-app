@@ -1,9 +1,11 @@
 import 'package:first_app/form_validation_test.dart';
+import 'package:first_app/navigation/home_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'navigation/login_page.dart';
+import 'navigation/profile_page.dart';
 
 void main() {
   runApp(
@@ -34,7 +36,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // home:
       //     FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
-      home: LoginPage(),
+      routes: {
+        "/": (_) => LoginPage(),
+        "/home": (_) => HomePage(),
+        "/profile": (context) => ProfilePage(),
+      },
+      initialRoute: "/",
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade200,
