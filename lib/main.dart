@@ -3,6 +3,8 @@ import 'package:first_app/form_validation_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'navigation/login_page.dart';
+
 void main() {
   runApp(
     MyApp(),
@@ -30,8 +32,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "Test App",
       debugShowCheckedModeBanner: false,
-      home:
-          FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
+      // home:
+      //     FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
+      home: LoginPage(),
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade200,
