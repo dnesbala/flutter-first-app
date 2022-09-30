@@ -1,3 +1,4 @@
+import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/navigation/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,13 @@ class LoginPage extends StatelessWidget {
                 // Navigator.of(context).push(
                 //   MaterialPageRoute(builder: (_) => HomePage()),
                 // );
-                Navigator.of(context).pushNamed("/home");
+                Navigator.of(context).pushNamed(
+                  AppRoutes.home,
+                  arguments: {
+                    "username": "admin",
+                    "password": "1234",
+                  },
+                );
               },
               child: Text("Log In"),
             ),

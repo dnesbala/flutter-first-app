@@ -6,6 +6,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
@@ -15,6 +18,8 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Home Page"),
+            Text("Username = ${args['username']}"),
+            Text("Password = ${args['password']}"),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(

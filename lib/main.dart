@@ -1,3 +1,4 @@
+import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/form_validation_test.dart';
 import 'package:first_app/navigation/home_page.dart';
 
@@ -37,9 +38,9 @@ class _MyAppState extends State<MyApp> {
       // home:
       //     FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
       routes: {
-        "/": (_) => LoginPage(),
-        "/home": (_) => HomePage(),
-        "/profile": (context) => ProfilePage(),
+        AppRoutes.index: (_) => LoginPage(),
+        AppRoutes.home: (_) => HomePage(),
+        AppRoutes.profile: (context) => ProfilePage(),
       },
       initialRoute: "/",
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
