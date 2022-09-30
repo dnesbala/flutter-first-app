@@ -5,6 +5,7 @@ import 'package:first_app/navigation/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'config/route_handler.dart';
 import 'navigation/login_page.dart';
 import 'navigation/profile_page.dart';
 
@@ -37,12 +38,13 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // home:
       //     FormValidationTest(isDarkMode: isDarkMode, toggleTheme: _toggleTheme),
-      routes: {
-        AppRoutes.index: (_) => LoginPage(),
-        AppRoutes.home: (_) => HomePage(),
-        AppRoutes.profile: (context) => ProfilePage(),
-      },
-      initialRoute: "/",
+      // routes: {
+      //   AppRoutes.index: (_) => LoginPage(),
+      //   AppRoutes.home: (_) => HomePage(),
+      //   AppRoutes.profile: (context) => ProfilePage(),
+      // },
+      // initialRoute: "/",
+      onGenerateRoute: generateRoute,
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade200,

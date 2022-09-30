@@ -1,14 +1,16 @@
-import 'package:first_app/navigation/profile_page.dart';
 import 'package:flutter/material.dart';
 
+import 'package:first_app/navigation/profile_page.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final Map<String, dynamic> userInfo;
+  const HomePage({
+    Key? key,
+    required this.userInfo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
@@ -18,8 +20,8 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Home Page"),
-            Text("Username = ${args['username']}"),
-            Text("Password = ${args['password']}"),
+            Text("Username = ${userInfo['username']}"),
+            Text("Password = ${userInfo['password']}"),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
