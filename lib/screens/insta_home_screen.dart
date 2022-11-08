@@ -40,6 +40,19 @@ class InstaHomeScreen extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_a_photo), label: "Add"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: "Favorites"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_box_outlined), label: "Profile"),
+          ],
+        ),
       ),
     );
   }
