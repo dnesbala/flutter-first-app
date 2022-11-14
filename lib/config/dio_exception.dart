@@ -39,7 +39,7 @@ class DioException implements Exception {
             ? dioError.response!.data["error"]
             : "Bad Request";
       case 404:
-        return "Something went wrong";
+        return "Something went wrong";  
       case 500:
         return "Internal server error";
       case 502:

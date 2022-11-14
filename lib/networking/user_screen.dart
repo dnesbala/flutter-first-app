@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:first_app/networking/user_api_service.dart';
+import 'package:first_app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../config/dio_exception.dart';
@@ -18,6 +19,10 @@ class _UserScreenState extends State<UserScreen> {
   UserModel? user;
   String? errorMessage;
 
+  void setStateIfMounted(f) {
+    if (mounted) setState(f);
+  }
+
   @override
   void initState() {
     fetchUsers();
@@ -28,11 +33,11 @@ class _UserScreenState extends State<UserScreen> {
     var usersData = await userApi.getUsers();
 
     usersData.fold((l) {
-      setState(() {
+      setStateIfMounted(() {
         errorMessage = l;
       });
     }, (r) {
-      setState(() {
+      setStateIfMounted(() {
         user = r;
       });
     });
@@ -67,10 +72,14 @@ class _UserScreenState extends State<UserScreen> {
                 ElevatedButton(
                   onPressed: () async {
                     try {
-                      await userApi.login(
-                        email: "eve.holt@reqres.insdf",
-                        password: "cityslicka1",
+                      final token = await userApi.login(
+                        email: "eve.holt@reqres.in",
+                        password: "cityslicka",
                       );
+                      if (token != null) {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => WelcomeScreen()));
+                      }
                     } on DioException catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(e.message!),

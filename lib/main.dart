@@ -1,9 +1,12 @@
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/form_validation_test.dart';
 import 'package:first_app/navigation/home_page.dart';
+import 'package:first_app/networking/user_screen.dart';
+import 'package:first_app/screens/welcome_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'config/route_handler.dart';
 import 'navigation/login_page.dart';
@@ -23,12 +26,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  void setStateIfMounted(f) {
+    if (mounted) setState(f);
+  }
+
   bool isDarkMode = false;
+  bool hasToken = false;
 
   void _toggleTheme() {
-    setState(() {
+    setStateIfMounted(() {
       isDarkMode = !isDarkMode;
     });
+  }
+
+  @override
+  void initState() {
+    // SharedPreferences.getInstance().then((prefs) => prefs.clear());
+    checkToken();
+    super.initState();
+  }
+
+  checkToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString("token");
+    if (token != null) {
+      // hasToken = true;
+    }
+    //  else {
+    //   hasToken = false;
+    // }
+    setStateIfMounted(() {});
   }
 
   @override
@@ -43,8 +70,8 @@ class _MyAppState extends State<MyApp> {
       //   AppRoutes.home: (_) => HomePage(),
       //   AppRoutes.profile: (context) => ProfilePage(),
       // },
-      // initialRoute: "/",
-      onGenerateRoute: generateRoute,
+      // onGenerateRoute: generateRoute,
+      home: hasToken ? WelcomeScreen() : UserScreen(),
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade200,

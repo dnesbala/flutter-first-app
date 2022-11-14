@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:first_app/networking/models/user_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../config/dio_exception.dart';
 
@@ -78,7 +79,9 @@ class UserApiService {
     }
   }
 
-  Future<void> login({required String email, required String password}) async {
+  Future<String?> login(
+      {required String email, required String password}) async {
+    final prefs = await SharedPreferences.getInstance();
     try {
       var response = await _dio.post(
         "/login/",
@@ -90,7 +93,9 @@ class UserApiService {
       if (response.statusCode == 200) {
         var responseJson = response.data;
         var token = responseJson["token"];
-        print(token);
+        await prefs.setString("token", token);
+
+        return token;
       } else {
         var errorJson = response.data;
         var error = errorJson["error"];
